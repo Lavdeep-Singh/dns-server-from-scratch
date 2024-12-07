@@ -1,36 +1,50 @@
-[![progress-banner](https://backend.codecrafters.io/progress/dns-server/fbfdf3b0-61ac-4618-b3d8-bc23b6b18d8c)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+# Java DNS Server Implementation
 
-This is a starting point for Java solutions to the
-["Build Your Own DNS server" Challenge](https://app.codecrafters.io/courses/dns-server/overview).
+A robust DNS server implementation in Java that handles DNS queries with support for both direct resolution and forwarding capabilities.
 
-In this challenge, you'll build a DNS server that's capable of parsing and
-creating DNS packets, responding to DNS queries, handling various record types
-and doing recursive resolve. Along the way we'll learn about the DNS protocol,
-DNS packet format, root servers, authoritative servers, forwarding servers,
-various record types (A, AAAA, CNAME, etc) and more.
+## 🚀 Features
 
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
+- Custom DNS query handling and response generation
+- Support for multiple DNS questions in a single query
+- DNS message compression handling
+- Configurable DNS forwarding to upstream resolvers
+- IPv4 (A record) resolution
+- RFC 1035 compliant implementation
 
-# Passing the first stage
+## 🛠️ Technical Highlights
 
-The entry point for your `your_program.sh` implementation is in
-`src/main/java/Main.java`. Study and uncomment the relevant code, and push your
-changes to pass the first stage:
+- **Efficient Buffer Management**: Uses Java's ByteBuffer for optimal memory handling
+- **DNS Header Processing**: Complete implementation of DNS header fields
+- **Question Section Handling**: Supports domain name parsing and compression
+- **Answer Section Generation**: Creates proper DNS responses with IPv4 addresses
+- **Forwarding Mechanism**: Ability to forward queries to upstream DNS resolvers
 
-```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
+## 🔍 Implementation Details
+
+The server handles DNS queries through several key components:
+
+1. **Query Parsing**: Processes incoming UDP packets containing DNS queries
+2. **Header Management**: Handles DNS message headers with proper flags and counts
+3. **Domain Processing**: Supports domain name encoding/decoding with compression
+4. **Response Generation**: Creates properly formatted DNS responses
+5. **Forwarding**: Optional forwarding to configurable upstream DNS resolvers
+
+## 💻 Usage
+
+```bash
+javac -d out src/main/java/*.java
+java -cp out Main
 ```
+## 🔧 Technical Deep Dive
+- Handles DNS compression pointers (0xC0) for efficient message encoding
+- Supports multiple questions in a single DNS query
+- Implements proper byte-level manipulation for DNS protocol compliance
+- Uses ByteBuffer for efficient memory management and packet handling
+- Supports both direct resolution and forwarding modes
 
-Time to move on to the next stage!
+## 📚 References
+RFC 1035 - Domain Names Implementation and Specification
+DNS Protocol Overview
 
-# Stage 2 & beyond
-
-Note: This section is for stages 2 and beyond.
-
-1. Ensure you have `mvn` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `src/main/java/Main.java`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
+## 🤝 Contributing
+Contributions are welcome! Feel free to submit pull requests or open issues for improvements and bug fixes.
